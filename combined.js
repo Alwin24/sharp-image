@@ -5,7 +5,7 @@ const addText = async () => {
     const width = 1024;
     const height = 575;
     const text = "All hail @winster";
-
+    // change x and y percentage to position the text
     const svgText = `<svg width="${width}" height="${height}">
     <style>
       .title { fill: black; font-size: 60px}
@@ -16,7 +16,10 @@ const addText = async () => {
     const svgBuffer = Buffer.from(svgText);
 
     await sharp('./images/background.jpeg')
-      .composite([{ input: './images/foreground.jpeg', left: 600, top: 100 }, { input: svgBuffer, left: 0, top: 0 }])
+      .composite([
+        { input: './images/foreground.jpeg', left: 600, top: 100 },
+        { input: svgBuffer, left: 0, top: 0 }
+      ])
       .toFile(__dirname + '/output/combined.jpeg')
   } catch (error) {
     console.log(error);

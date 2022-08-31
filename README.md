@@ -1,0 +1,1 @@
+# Dynamically combining images and adding text using sharp
